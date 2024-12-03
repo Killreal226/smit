@@ -18,16 +18,7 @@ class DBConfig(Config):
 
     @property
     def database_url(self):
-        return f"postgresql+asyncpg://{self.db_username}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_table_name}"
-
-
-# class DBConfig(Config):
-#     db_name: str
-#     table_name: str
-
-#     @property
-#     def database_url(self):
-#         return f"sqlite+aiosqlite:///{self.db_name}"
+        return f"postgresql+asyncpg://{self.db_username}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}"
 
 
 db_config = DBConfig()
