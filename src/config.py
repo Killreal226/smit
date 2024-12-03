@@ -21,4 +21,10 @@ class DBConfig(Config):
         return f"postgresql+asyncpg://{self.db_username}:{self.db_password}@{self.db_host}:{self.db_port}/{self.db_name}"
 
 
+class KafkaConfig(Config):
+    kafka_broker_url: str
+    kafka_topic: str
+
+
 db_config = DBConfig()
+kafka_config = KafkaConfig()
