@@ -1,5 +1,4 @@
 from src.db.dao import TariffDAO
-from src.broker.kafka import Kafka
 from src.schemas.tariff import \
     UpdateRequest, CostRequest, DeleteRequest, AddRequest
 
@@ -7,7 +6,6 @@ from src.schemas.tariff import \
 class TariffController:
     def __init__(self):
         self._dao = TariffDAO
-        self._broker = Kafka
 
     async def get_cost(self, request: CostRequest) -> float:
         if request.date:
@@ -37,4 +35,3 @@ class TariffController:
             await self._dao.add_many(*tariffes)
         else:
             await self._dao.add_one(**request.tariff.model_dump())
-        await self._broker.log_to_kafka()
